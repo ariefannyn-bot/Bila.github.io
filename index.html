@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Special Surprise for You! ❤️</title>
+  <title>A little comfort for you! ❤️</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -27,7 +27,7 @@
       width: 100%;
     }
     h1 { color: #e63946; margin-bottom: 15px; font-size: 1.8rem; }
-    p { margin-bottom: 20px; line-height: 1.5; color: #555; }
+    p { margin-bottom: 20px; line-height: 1.6; color: #555; }
     input[type="text"] {
       width: 80%;
       padding: 12px;
@@ -58,34 +58,68 @@
       border-radius: 15px;
       border: 2px dashed #e63946;
     }
+    /* Styling khusus Surat / Pesan Romantis */
+    .romantic-letter {
+      background: #fffaf0;
+      border-left: 4px solid #ff416c;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: left;
+      font-style: italic;
+      margin: 20px 0;
+      color: #444;
+      font-size: 0.95rem;
+    }
+    .music-player {
+      margin-top: 15px;
+    }
   </style>
 </head>
 <body>
 
+  <!-- Pemutar Musik Latar -->
+  <audio id="bgMusic" loop>
+    <!-- Simpan file musik bernama music.mp3 di folder yang sama di GitHub -->
+    <source src="music.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung pemutar musik.
+  </audio>
+
   <div class="card">
-    <!-- Bagian Pertanyaan / Password -->
+    <!-- Langkah 1: Kuis / Pembuka -->
     <div id="quiz-step">
       <h1>Halo Sayang! ❤️</h1>
-      <p>Ada kejutan spesial buat kamu, tapi jawab dulu pertanyaan rahasia ini:</p>
-      <p><strong>"Di mana tempat kencan pertama kita?"</strong></p>
+      <p> There is a special messages for you, but answer this question first!:</p>
+      <p><strong>"Apa nama mobil hyundai merah bapakku?"</strong></p>
       
       <input type="text" id="answerInput" placeholder="Ketik jawabanmu di sini...">
       <br>
       <button onclick="checkAnswer()">Buka Kejutan ✨</button>
-      <p id="errorMsg" style="color: red; display: none; margin-top: 10px; font-size: 0.9rem;">Ups, jawabannya belum pas! Coba ingat-ingat lagi 😄</p>
+      <p id="errorMsg" style="color: red; display: none; margin-top: 10px; font-size: 0.9rem;"> Salah Ih!😝</p>
     </div>
 
-    <!-- Bagian Kejutan (Tersembunyi Awalnya) -->
+    <!-- Langkah 2: Pesan Romantis & Kejutan Utama -->
     <div id="surprise-step" class="hidden">
       <h1>Selamat! 🎉💖</h1>
+
+      <!-- Surat / Pesan Romantis -->
+      <div class="romantic-letter">
+        <p>
+          "Kalau dunia lagi jahat, kita gebukin bareng-bareng! 
+          Inget yaa
+          Aku bakal selalu support kamu dan jadi tempat paling aman dan nyaman buat kamu 🏡💗✨. 
+          I love you! 💕"
+        </p>
+      </div>
+
+      <!-- Kejutan Utama -->
       <div class="gift-box">
         <p>Kamu berhasil menebaknya!</p>
         <h2>🎁 Hadiah Kamu:</h2>
         <p style="font-size: 1.2rem; font-weight: bold; color: #e63946; margin: 15px 0;">
-          Voucher Kencan Akhir Pekan + Dinner Sepuasnya! 🍝🍷
+          Voucher pelukan tak terbatas dan melampauinya🚀 
         </p>
-        <p>Siap-siap ya hari Sabtu jam 19.00!</p>
       </div>
+      
       <br>
       <a href="https://wa.me/6281234567890?text=Aku%20siap%20buat%20kencan%20hari%20Sabtu!%20❤️" target="_blank">
         <button>Klaim ke WhatsApp Kamu 📱</button>
@@ -97,12 +131,18 @@
     function checkAnswer() {
       const answer = document.getElementById('answerInput').value.trim().toLowerCase();
       
-      // Ganti 'cafe x' dengan jawaban rahasia kalian (dalam huruf kecil)
-      const correctAnswer = 'cafe x'; 
+      // Ganti dengan jawaban rahasia kalian (huruf kecil semua)
+      const correctAnswer = 'maudy ahyundai'; 
 
       if (answer === correctAnswer) {
         document.getElementById('quiz-step').classList.add('hidden');
         document.getElementById('surprise-step').classList.remove('hidden');
+
+        // Memutar musik otomatis saat jawaban benar
+        const music = document.getElementById('bgMusic');
+        music.play().catch(function(error) {
+          console.log("Autoplay musik diblokir oleh browser, butuh interaksi pengguna.");
+        });
       } else {
         document.getElementById('errorMsg').style.display = 'block';
       }
