@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Special Surprise for You! ❤️</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%);
+      color: #333;
+      text-align: center;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+    h1 { color: #e63946; margin-bottom: 15px; font-size: 1.8rem; }
+    p { margin-bottom: 20px; line-height: 1.5; color: #555; }
+    input[type="text"] {
+      width: 80%;
+      padding: 12px;
+      border: 2px solid #ff4b2b;
+      border-radius: 25px;
+      outline: none;
+      text-align: center;
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+    button {
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform 0.2s;
+    }
+    button:hover { transform: scale(1.05); }
+    .hidden { display: none; }
+    .gift-box {
+      margin-top: 20px;
+      padding: 20px;
+      background: #fff5f5;
+      border-radius: 15px;
+      border: 2px dashed #e63946;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <!-- Bagian Pertanyaan / Password -->
+    <div id="quiz-step">
+      <h1>Halo Sayang! ❤️</h1>
+      <p>Ada kejutan spesial buat kamu, tapi jawab dulu pertanyaan rahasia ini:</p>
+      <p><strong>"Di mana tempat kencan pertama kita?"</strong></p>
+      
+      <input type="text" id="answerInput" placeholder="Ketik jawabanmu di sini...">
+      <br>
+      <button onclick="checkAnswer()">Buka Kejutan ✨</button>
+      <p id="errorMsg" style="color: red; display: none; margin-top: 10px; font-size: 0.9rem;">Ups, jawabannya belum pas! Coba ingat-ingat lagi 😄</p>
+    </div>
+
+    <!-- Bagian Kejutan (Tersembunyi Awalnya) -->
+    <div id="surprise-step" class="hidden">
+      <h1>Selamat! 🎉💖</h1>
+      <div class="gift-box">
+        <p>Kamu berhasil menebaknya!</p>
+        <h2>🎁 Hadiah Kamu:</h2>
+        <p style="font-size: 1.2rem; font-weight: bold; color: #e63946; margin: 15px 0;">
+          Voucher Kencan Akhir Pekan + Dinner Sepuasnya! 🍝🍷
+        </p>
+        <p>Siap-siap ya hari Sabtu jam 19.00!</p>
+      </div>
+      <br>
+      <a href="https://wa.me/6281234567890?text=Aku%20siap%20buat%20kencan%20hari%20Sabtu!%20❤️" target="_blank">
+        <button>Klaim ke WhatsApp Kamu 📱</button>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function checkAnswer() {
+      const answer = document.getElementById('answerInput').value.trim().toLowerCase();
+      
+      // Ganti 'cafe x' dengan jawaban rahasia kalian (dalam huruf kecil)
+      const correctAnswer = 'cafe x'; 
+
+      if (answer === correctAnswer) {
+        document.getElementById('quiz-step').classList.add('hidden');
+        document.getElementById('surprise-step').classList.remove('hidden');
+      } else {
+        document.getElementById('errorMsg').style.display = 'block';
+      }
+    }
+  </script>
+
+</body>
+</html>
